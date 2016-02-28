@@ -28,25 +28,6 @@ h3 {
     background-color: #FEEAB0;
 }
 
-.cke_chrome {
-    border: 1px solid #eee;
-    border-radius: 3px;
-    box-shadow: none;
-}
-
-.cke_top {
-    background: #FBFBFB;
-}
-
-.cke_bottom {
-    background: #FBFBFB;
-    border-top: 1px solid #eee;
-}
-
-.cke_resizer {
-    border-color: transparent #C8C8C8 transparent transparent;
-}
-
 .cke_editable {
     line-height: 28px;
     text-align: justify;
