@@ -37,5 +37,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
 	// Custom CSS
-	config.contentsCss = 'custom.css';
+	config.contentsCss = CKEDITOR.basePath + 'custom.css';
 };
