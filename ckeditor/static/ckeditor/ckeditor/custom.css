@@ -4,25 +4,49 @@ body {
     color: #111;
 }
 
-h1, h2, h3 {
-    color: #666;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
 h1 {
-    font-size: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #666;
+    text-align: left;
+    padding: 15px 0;
 }
 
 h2 {
-	color: #777;
-    font-size: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 8px 0;
 }
 
 h3 {
+    font-size: 14px;
+    font-weight: 600;
     color: #888;
-    font-size: 10px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 8px 0;
+ }
+
+blockquote {
+    background: #fdfdfd;
+    border: 1px solid #EEE;
+    border-left: 3px solid #ccc;
+    border-radius: 3px;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    font-style: italic;
+    font-size: 14px;
+    line-height: 24px;
+    color: #444;
 }
+
+.small {
+    font-variant: small-caps;
+ }
 
 .marker {
     background-color: #FEEAB0;
