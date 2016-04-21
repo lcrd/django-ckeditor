@@ -89,22 +89,17 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
             var dialog = this,
                 number = this.number = parseInt(dialog.getValueOf("main_tab", "number")),
                 text = dialog.getValueOf("main_tab", "text"),
+                publication = location.pathname.match(/publication\/([^\/]+)/)[0],
                 reference = $(dialog.getContentElement("main_tab", "reference").getInputElement().$).val(),
                 footnote_data = {
                     number: number,
-                    text: text
+                    text: text,
+                    publication: publication
                 },
 
                 get_cookie = function(name) {
                     var match = document.cookie.match(new RegExp(name + "=([^;]+)"));
                     if (match) return match[1];
-                },
-
-                get_publication_id = function () {
-                    publication_id = location.pathname.match(/publication\/(\d+)/);
-                    publication_id = publication_id ? publication_id[1] : $('input[name="publication"]').val();
-
-                    return parseInt(publication_id);
                 },
 
                 render_footnote = function () {
@@ -118,7 +113,6 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
                 };
 
             footnote_data["reference"] = reference ? reference.map(Number) : [];
-            footnote_data["publication"] = get_publication_id();
 
             $.ajax({
                 type: "POST",
