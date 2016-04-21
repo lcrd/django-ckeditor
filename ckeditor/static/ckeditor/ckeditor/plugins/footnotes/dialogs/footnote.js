@@ -89,7 +89,7 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
             var dialog = this,
                 number = this.number = parseInt(dialog.getValueOf("main_tab", "number")),
                 text = dialog.getValueOf("main_tab", "text"),
-                publication = location.pathname.match(/publication\/([^\/]+)/)[0],
+                publication = location.pathname.match(/publication\/([^\/]+)/)[1],
                 reference = $(dialog.getContentElement("main_tab", "reference").getInputElement().$).val(),
                 footnote_data = {
                     number: number,
