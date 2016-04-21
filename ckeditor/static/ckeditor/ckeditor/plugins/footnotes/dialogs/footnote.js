@@ -72,7 +72,6 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
                         items: [],
                         multiple: true,
                         style: "width: 400px; height: 102px;",
-                        validate: CKEDITOR.dialog.validate.notEmpty("Footnote should refer at least to one publication."),
                         onShow: function () {
                             this.disable();
                         },
@@ -90,12 +89,22 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
             var dialog = this,
                 number = this.number = parseInt(dialog.getValueOf("main_tab", "number")),
                 text = dialog.getValueOf("main_tab", "text"),
-                reference = $(dialog.getContentElement("main_tab", "reference").getInputElement().$).val().map(Number),
-                publication = parseInt(location.pathname.match(/publication\/(\d+)/)[1]),
+                reference = $(dialog.getContentElement("main_tab", "reference").getInputElement().$).val(),
+                footnote_data = {
+                    number: number,
+                    text: text
+                },
 
                 get_cookie = function(name) {
                     var match = document.cookie.match(new RegExp(name + "=([^;]+)"));
                     if (match) return match[1];
+                },
+
+                get_publication_id = function () {
+                    publication_id = location.pathname.match(/publication\/(\d+)/);
+                    publication_id = publication_id ? publication_id[1] : $('input[name="publication"]').val();
+
+                    return parseInt(publication_id);
                 },
 
                 render_footnote = function () {
@@ -108,6 +117,9 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
                     editor.insertElement(footnote);
                 };
 
+            footnote_data["reference"] = reference ? reference.map(Number) : [];
+            footnote_data["publication"] = get_publication_id();
+
             $.ajax({
                 type: "POST",
                 url: "/publications/publication/api/create_footnote/",
@@ -115,15 +127,11 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
                     "X-CSRFToken": get_cookie("csrftoken")
                 },
                 contentType: "application/json; charset=UTF-8",
-                data: JSON.stringify({
-                    number: number,
-                    text: text,
-                    publication: publication,
-                    reference: reference
-                })
-            }).success(render_footnote)
+                data: JSON.stringify(footnote_data)
+            })
+            .success(render_footnote)
             .error(function (xhr) {
-                var errors = xhr.responseJSON.non_field_errors;
+                var errors = xhr.responseJSON && xhr.responseJSON.non_field_errors;
 
                 if (errors) {
                     var errors_msg;
