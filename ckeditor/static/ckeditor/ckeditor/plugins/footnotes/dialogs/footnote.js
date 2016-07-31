@@ -103,12 +103,15 @@ CKEDITOR.dialog.add("footnoteDialog", function (editor) {
                 },
 
                 render_footnote = function () {
-                    var footnote = editor.document.createElement("a");
+                    var anchor = editor.document.createElement("span"),
+                        footnote = editor.document.createElement("a");
+
+                    anchor.setAttribute("id", "footnote_ref_" + number);
+                    anchor.setText(number);
 
                     footnote.addClass("footnotes__ref");
-                    footnote.setAttribute("id", "footnote_ref_" + number);
                     footnote.setAttribute("href", "#footnote_" + number);
-                    footnote.setText(number);
+                    footnote.append(anchor);
 
                     editor.insertElement(footnote);
                 };
