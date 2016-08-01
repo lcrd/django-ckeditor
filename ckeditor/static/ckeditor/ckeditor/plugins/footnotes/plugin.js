@@ -7,7 +7,7 @@ CKEDITOR.plugins.add("footnotes", {
         editor.addContentsCss(this.path + "styles/footnote.css");
 
         editor.addCommand("insertFootnote", new CKEDITOR.dialogCommand("footnoteDialog", {
-            requiredContent: "a(footnotes__ref)[id,href]"
+            requiredContent: "a(footnotes__ref)[href]"
         }));
 
         editor.ui.addButton("Footnote", {
