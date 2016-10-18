@@ -48,21 +48,6 @@ DEFAULT_CONFIG = {
     'filebrowserWindowHeight': 725,
     'extraPlugins': ','.join(
         [
-            # you extra plugins here
-            # 'div',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath',
-            'a11yhelp',
-            'link',
-            'magicline',
-            'pastefromword',
-            'scayt',
-            'specialchar',
-            'table',
-            'tabletools',
-            'wsc',
             'footnotes',
             'pagenumber'
         ]),
