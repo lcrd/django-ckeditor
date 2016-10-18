@@ -1,0 +1,7 @@
+.pagenumber__icon {
+    background: url('/static/ckeditor/ckeditor/plugins/pagenumber/icons/pagenumber.png');
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin: 5px 3px 0 0;
+}

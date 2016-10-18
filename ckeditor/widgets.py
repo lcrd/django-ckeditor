@@ -30,7 +30,7 @@ class LazyEncoder(DjangoJSONEncoder):
 json_encode = LazyEncoder().encode
 
 DEFAULT_CONFIG = {
-    'skin': 'moono',
+    'skin': 'office2013',
     'toolbar_Basic': [
         ['Source', '-', 'Bold', 'Italic']
     ],
@@ -39,13 +39,33 @@ DEFAULT_CONFIG = {
         ['Link', 'Unlink', 'Anchor'],
         ['Image', 'Flash', 'Table', 'HorizontalRule'],
         ['TextColor', 'BGColor'],
-        ['Smiley', 'SpecialChar'], ['Source'],
+        ['Smiley', 'SpecialChar'], ['Source'], ['Pagenumber']
     ],
     'toolbar': 'Full',
     'height': 291,
     'width': 835,
     'filebrowserWindowWidth': 940,
     'filebrowserWindowHeight': 725,
+    'extraPlugins': ','.join(
+        [
+            # you extra plugins here
+            # 'div',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+            'a11yhelp',
+            'link',
+            'magicline',
+            'pastefromword',
+            'scayt',
+            'specialchar',
+            'table',
+            'tabletools',
+            'wsc',
+            'footnotes',
+            'pagenumber'
+        ]),
 }
 
 
